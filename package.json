@@ -5,23 +5,32 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch-server": "nodemon --watch 'src/**/*' -e ts,tsx --exec 'ts-node' ./src/server.ts"
+    "watch-server": "nodemon --watch src/**/* -e ts,tsx --exec ts-node ./src/server.ts"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@koa/multer": "^2.0.2",
     "@types/mysql": "^2.15.8",
     "co-mysql": "^1.0.0",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.11.0",
     "koa-better-body": "^3.3.4",
+    "koa-body": "^4.1.1",
+    "koa-bunyan-logger": "^2.1.0",
     "koa-jwt": "^3.6.0",
+    "koa-logger": "^3.2.1",
     "koa-router": "^7.4.0",
+    "koa-sam-log": "^1.0.3",
     "koa-static": "^5.0.0",
+    "koa-websocket": "^6.0.0",
     "moment": "^2.24.0",
+    "multer": "^1.4.2",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
     "node-mysql": "^0.4.2",
+    "node-pinyin": "^0.2.3",
+    "socket.io": "^2.3.0",
     "uuid": "^3.4.0"
   },
   "devDependencies": {

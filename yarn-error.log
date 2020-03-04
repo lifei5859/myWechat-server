@@ -1,21 +1,30 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add utility
+  C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\yarn\bin\yarn.js add ts-node _D
 
 PATH: 
-  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mysql/bin:/usr/local/mysql/support-files:/Users/mac/Library/Android/sdk/tools:/Users/mac/Library/Android/sdk/tools/bin:/Users/mac/Library/Android/sdk/platform-tools:/Users/mac/Library/Android/sdk/emulator:/gradle-4.7/bin:/usr/local/mysql/bin:/usr/local/mysql/support-files:/Users/mac/Library/Android/sdk/tools:/Users/mac/Library/Android/sdk/tools/bin:/Users/mac/Library/Android/sdk/platform-tools:/Users/mac/Library/Android/sdk/emulator:/gradle-4.7/bin
+  F:\工作项目\wechat-server\myWechat-server\node_modules\.bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Git\cmd;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\TortoiseSVN\bin;C:\Users\shinelon\AppData\Local\Programs\Python\Python37\Scripts\;C:\Users\shinelon\AppData\Local\Programs\Python\Python37\;C:\Users\shinelon\AppData\Local\Microsoft\WindowsApps;C:\Users\shinelon\AppData\Local\Programs\Microsoft VS Code\bin;D:\mysql-5.7.24-winx64\bin;C:\Users\shinelon\AppData\Roaming\npm;C:\Program Files\Java\jdk1.8.0_101\bin;
 
 Yarn version: 
-  1.21.1
+  1.16.0
 
 Node version: 
-  12.14.1
+  10.15.3
 
 Platform: 
-  darwin x64
+  win32 x64
 
 Trace: 
-  Error: getaddrinfo ENOTFOUND codeload.github.com
-      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:60:26)
+  Error: https://registry.npm.taobao.org/_D: Not found
+      at Request.params.callback [as _callback] (C:\Program Files\nodejs\node_modules\yarn\lib\cli.js:66091:18)
+      at Request.self.callback (C:\Program Files\nodejs\node_modules\yarn\lib\cli.js:129590:22)
+      at Request.emit (events.js:189:13)
+      at Request.<anonymous> (C:\Program Files\nodejs\node_modules\yarn\lib\cli.js:130562:10)
+      at Request.emit (events.js:189:13)
+      at IncomingMessage.<anonymous> (C:\Program Files\nodejs\node_modules\yarn\lib\cli.js:130484:12)
+      at Object.onceWrapper (events.js:277:13)
+      at IncomingMessage.emit (events.js:194:15)
+      at endReadableNT (_stream_readable.js:1125:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
 
 npm manifest: 
   {
@@ -48,7 +57,8 @@ npm manifest:
       "@types/koa": "^2.11.0",
       "@types/koa-router": "^7.4.0",
       "ts-node": "^8.6.2",
-      "typescript": "^3.7.5"
+      "typescript": "^3.7.5",
+      "utility": "^1.16.3"
     }
   }
 
@@ -287,6 +297,11 @@ Lockfile:
       depd "~2.0.0"
       keygrip "~1.1.0"
   
+  copy-to@^2.0.1:
+    version "2.0.1"
+    resolved "https://registry.npm.taobao.org/copy-to/download/copy-to-2.0.1.tgz#2680fbb8068a48d08656b6098092bdafc906f4a5"
+    integrity sha1-JoD7uAaKSNCGVrYJgJK9r8kG9KU=
+  
   core-util-is@~1.0.0:
     version "1.0.2"
     resolved "https://registry.npm.taobao.org/core-util-is/download/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
@@ -378,6 +393,13 @@ Lockfile:
     resolved "https://registry.npm.taobao.org/esprima/download/esprima-4.0.1.tgz#13b04cdb3e6c5d19df91ab6987a8695619b0aa71"
     integrity sha1-E7BM2z5sXRnfkatph6hpVhmwqnE=
   
+  extend-shallow@^2.0.1:
+    version "2.0.1"
+    resolved "https://registry.npm.taobao.org/extend-shallow/download/extend-shallow-2.0.1.tgz#51af7d614ad9a9f610ea1bafbb989d6b1c56890f"
+    integrity sha1-Ua99YUrZqfYQ6huvu5idaxxWiQ8=
+    dependencies:
+      is-extendable "^0.1.0"
+  
   extend-shallow@^3.0.2:
     version "3.0.2"
     resolved "https://registry.npm.taobao.org/extend-shallow/download/extend-shallow-3.0.2.tgz#26a71aaf073b39fb2127172746131c2704028db8"
@@ -460,6 +482,11 @@ Lockfile:
     version "2.0.4"
     resolved "https://registry.npm.taobao.org/inherits/download/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
     integrity sha1-D6LGT5MpF8NDOg3tVTY6rjdBa3w=
+  
+  is-extendable@^0.1.0:
+    version "0.1.1"
+    resolved "https://registry.npm.taobao.org/is-extendable/download/is-extendable-0.1.1.tgz#62b110e289a471418e3ec36a617d472e301dfc89"
+    integrity sha1-YrEQ4omkcUGOPsNqYX1HLjAd/Ik=
   
   is-extendable@^1.0.1:
     version "1.0.1"
@@ -731,6 +758,18 @@ Lockfile:
     dependencies:
       mime-db "1.43.0"
   
+  minimist@0.0.8:
+    version "0.0.8"
+    resolved "https://registry.npm.taobao.org/minimist/download/minimist-0.0.8.tgz#857fcabfc3397d2625b8228262e86aa7a011b05d"
+    integrity sha1-hX/Kv8M5fSYluCKCYuhqp6ARsF0=
+  
+  mkdirp@^0.5.1:
+    version "0.5.1"
+    resolved "https://registry.npm.taobao.org/mkdirp/download/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
+    integrity sha1-MAV0OOrGz3+MR2fzhkjWaX11yQM=
+    dependencies:
+      minimist "0.0.8"
+  
   moment@^2.24.0:
     version "2.24.0"
     resolved "https://registry.npm.taobao.org/moment/download/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
@@ -984,7 +1023,7 @@ Lockfile:
   
   ts-node@^8.6.2:
     version "8.6.2"
-    resolved "https://registry.npm.taobao.org/ts-node/download/ts-node-8.6.2.tgz#7419a01391a818fbafa6f826a33c1a13e9464e35"
+    resolved "https://registry.npm.taobao.org/ts-node/download/ts-node-8.6.2.tgz?cache=0&sync_timestamp=1578943904584&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fts-node%2Fdownload%2Fts-node-8.6.2.tgz#7419a01391a818fbafa6f826a33c1a13e9464e35"
     integrity sha1-dBmgE5GoGPuvpvgmozwaE+lGTjU=
     dependencies:
       arg "^4.1.0"
@@ -1008,13 +1047,20 @@ Lockfile:
   
   typescript@^3.7.5:
     version "3.7.5"
-    resolved "https://registry.npm.taobao.org/typescript/download/typescript-3.7.5.tgz#0692e21f65fd4108b9330238aac11dd2e177a1ae"
+    resolved "https://registry.npm.taobao.org/typescript/download/typescript-3.7.5.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftypescript%2Fdownload%2Ftypescript-3.7.5.tgz#0692e21f65fd4108b9330238aac11dd2e177a1ae"
     integrity sha1-BpLiH2X9QQi5MwI4qsEd0uF3oa4=
   
   underscore@*:
     version "1.9.2"
     resolved "https://registry.npm.taobao.org/underscore/download/underscore-1.9.2.tgz#0c8d6f536d6f378a5af264a72f7bec50feb7cf2f"
     integrity sha1-DI1vU21vN4pa8mSnL3vsUP63zy8=
+  
+  unescape@^1.0.1:
+    version "1.0.1"
+    resolved "https://registry.npm.taobao.org/unescape/download/unescape-1.0.1.tgz#956e430f61cad8a4d57d82c518f5e6cc5d0dda96"
+    integrity sha1-lW5DD2HK2KTVfYLFGPXmzF0N2pY=
+    dependencies:
+      extend-shallow "^2.0.1"
   
   unpipe@1.0.0:
     version "1.0.0"
@@ -1030,6 +1076,17 @@ Lockfile:
     version "1.0.2"
     resolved "https://registry.npm.taobao.org/util-deprecate/download/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
     integrity sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=
+  
+  utility@^1.16.3:
+    version "1.16.3"
+    resolved "https://registry.npm.taobao.org/utility/download/utility-1.16.3.tgz?cache=0&sync_timestamp=1574243920593&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Futility%2Fdownload%2Futility-1.16.3.tgz#5dfd11de74e6bfdd826cc4a167e6301d92f4b70d"
+    integrity sha1-Xf0R3nTmv92CbMShZ+YwHZL0tw0=
+    dependencies:
+      copy-to "^2.0.1"
+      escape-html "^1.0.3"
+      mkdirp "^0.5.1"
+      mz "^2.7.0"
+      unescape "^1.0.1"
   
   uuid@^3.4.0:
     version "3.4.0"
