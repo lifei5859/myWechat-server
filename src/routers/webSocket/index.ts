@@ -230,13 +230,19 @@ router.all('/', async (ctx: any) => {
     ctx.log.info();
 });
 // 获取普通消息  与获取好友 耦合 后期需优化
-async function getCommonMsgList<T>(ctx: any, option: {userId: string, pageSize: number, page: number}): Promise<Array<T>> {
-    console.log(option.userId)
-    let res1: any[] = await ctx.db(`SELECT friend_id FROM friend_list WHERE is_ok=1 AND user_id=?;`, [option.userId]);
-    let res2: any[] = await ctx.db(`SELECT user_id FROM friend_list WHERE is_ok=1 AND friend_id=?;`, [option.userId]);
-    let friendIds: string[] = res1.map((item: any) => item['friend_id']);
-    let userIds: string[] = res2.map((item: any) => item['user_id']);
-    let friendIdList: string[] = friendIds.concat(userIds);
+async function getCommonMsgList<T>(ctx: any, option: {userId: string, pageSize: number, page: number, friendId: string | undefined}): Promise<Array<T>> {
+    // console.log(option, '消息请求')
+    let friendIdList: string[];
+
+    if(option.friendId) {
+        friendIdList = [option.friendId]
+    } else {
+        let res1: any[] = await ctx.db(`SELECT friend_id FROM friend_list WHERE is_ok=1 AND user_id=?;`, [option.userId]);
+        let res2: any[] = await ctx.db(`SELECT user_id FROM friend_list WHERE is_ok=1 AND friend_id=?;`, [option.userId]);
+        let friendIds: string[] = res1.map((item: any) => item['friend_id']);
+        let userIds: string[] = res2.map((item: any) => item['user_id']);
+        friendIdList = friendIds.concat(userIds);
+    }
     console.log(friendIdList)
     let commonMsgList: T[] = [];
     for (let i = 0; i < friendIdList.length; i++) {
@@ -244,15 +250,17 @@ async function getCommonMsgList<T>(ctx: any, option: {userId: string, pageSize: 
         // console.log(res)
         commonMsgList = [...commonMsgList, ...res]
     }
+    console.log(commonMsgList.length)
     return commonMsgList
 }
 
 // 程序加载成功 首次 获取消息
 router.post('/getMessage', async (ctx: any) => {
     console.log(ctx.request.fields, '请求信息')
-    const {page, pageSize, targetId} = ctx.request.body;
-    const res: any[] = await ctx.db(`SELECT * FROM message_table WHERE type='addFriend' and target_id=? LIMIT ?,?;`, [targetId, page, pageSize]);
-    const commonMsgList: any[] = await getCommonMsgList<any>(ctx, {userId: targetId, pageSize, page})
+    const {page, pageSize, targetId, type, friendId} = ctx.request.body;
+    let res: any[] = [];
+    if(type !== 'commonMsg') res = await ctx.db(`SELECT * FROM message_table WHERE type='addFriend' and target_id=? LIMIT ?,?;`, [targetId, page, pageSize]);
+    const commonMsgList: any[] = await getCommonMsgList<any>(ctx, {userId: targetId, pageSize, page, friendId})
     // console.log(commonMsgList)
     const flag = checkDbRes(res);
     if (flag === 'err') {
