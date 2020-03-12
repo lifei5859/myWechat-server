@@ -246,8 +246,8 @@ async function getCommonMsgList<T>(ctx: any, option: {userId: string, pageSize: 
     console.log(friendIdList)
     let commonMsgList: T[] = [];
     for (let i = 0; i < friendIdList.length; i++) {
-        const res = await ctx.db(`SELECT * FROM message_table WHERE type='commonMsg' AND (target_id=? AND origin_id=?) OR (origin_id=? AND target_id=?) ORDER BY c_time DESC LIMIT ?,? ;`, [friendIdList[i],option.userId, friendIdList[i],option.userId, option.page, option.pageSize]);
-        // console.log(res)
+        const res = await ctx.db(`SELECT * FROM message_table WHERE type='commonMsg' AND ((target_id=? AND origin_id=?) OR (origin_id=? AND target_id=?)) ORDER BY c_time DESC LIMIT ?,? ;`, [friendIdList[i],option.userId, friendIdList[i],option.userId, option.page, option.pageSize]);
+        console.log(res)
         commonMsgList = [...commonMsgList, ...res]
     }
     console.log(commonMsgList.length)
@@ -290,13 +290,23 @@ router.post('/getMessage', async (ctx: any) => {
 
 // 未处理信息数
 router.get('/getMsgCount', async (ctx: any) => {
-    console.log(ctx.query, '1233453465456')
-    const {id, type} = ctx.query
-    const res: any[] = await ctx.db(`SELECT count(*) as count FROM message_table WHERE target_id=? and processed=0 and type=?;`, [id, type]);
+    console.log(ctx.query)
+    const {id, type, friendId} = ctx.query
+    let res: any[];
+    if (friendId) {
+        res = await ctx.db(`SELECT count(*) as count FROM message_table WHERE target_id=? and processed=0 and type=? and origin_id=?;`, [id, type, friendId]);
+    } else {
+        res = await ctx.db(`SELECT count(*) as count FROM message_table WHERE target_id=? and processed=0 and type=?;`, [id, type]);
+    }
     console.log(res)
     ctx.body = {status: 1, data: res[0]}
 });
 
+// router.get('/getMsgCountByFriendId', async (ctx: any) => {
+//     console.log()
+// });
+
+// 转换信息为已处理
 router.get('/setMsgProcessed', async (ctx: any) => {
     console.log(ctx.query);
     const {targetId, originId, type} = ctx.query
