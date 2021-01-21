@@ -30,7 +30,7 @@
     "mysql2": "^2.1.0",
     "node-mysql": "^0.4.2",
     "node-pinyin": "^0.2.3",
-    "socket.io": "^2.3.0",
+    "socket.io": "^2.4.0",
     "uuid": "^3.4.0"
   },
   "devDependencies": {
