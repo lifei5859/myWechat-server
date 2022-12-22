@@ -13,7 +13,7 @@
     "@koa/multer": "^2.0.2",
     "@types/mysql": "^2.15.8",
     "co-mysql": "^1.0.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "koa": "^2.11.0",
     "koa-better-body": "^3.3.4",
     "koa-body": "^4.1.1",
